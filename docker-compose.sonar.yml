@@ -1,0 +1,20 @@
+# SonarQube local (Actividad 2). Se enciende con:  .\sonar.ps1 up
+# Usa la base de datos interna de SonarQube: solo para uso académico local.
+services:
+  sonarqube:
+    image: sonarqube:community
+    container_name: cuidarteplus-sonarqube
+    environment:
+      # Evita exigir vm.max_map_count en Docker Desktop (WSL 2)
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+    ports:
+      - "${PORT_SONARQUBE:-9000}:9000"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
