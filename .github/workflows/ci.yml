@@ -175,7 +175,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Construir y publicar imagen del backend
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./BACKEND
           push: true
@@ -183,7 +183,7 @@ jobs:
             ghcr.io/${{ env.OWNER }}/cuidarteplus-backend:latest
             ghcr.io/${{ env.OWNER }}/cuidarteplus-backend:${{ github.sha }}
       - name: Construir y publicar imagen del frontend
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./FRONTEND
           push: true
