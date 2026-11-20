@@ -30,7 +30,7 @@ RUN npm run build
 
 # Etapa 2: Producción
 # Imagen oficial de nginx SIN privilegios: no corre como root y escucha en el puerto 8080
-FROM nginxinc/nginx-unprivileged:1.27-alpine
+FROM nginxinc/nginx-unprivileged:1.31-alpine
 
 # Copiar los archivos construidos desde la etapa de construcción
 COPY --from=builder /app/dist /usr/share/nginx/html
