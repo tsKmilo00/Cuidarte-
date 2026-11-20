@@ -22,7 +22,7 @@ jobs:
     name: 1a · Secretos (Gitleaks)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0          # revisa TODO el historial, no solo el último cambio
       - name: Descargar Gitleaks
@@ -35,7 +35,7 @@ jobs:
     name: 1b · Dockerfiles (Hadolint)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Revisar Dockerfile del backend
         uses: hadolint/hadolint-action@v3.1.0
         with:
@@ -53,7 +53,7 @@ jobs:
     needs: [secretos, dockerfiles]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0          # SonarQube necesita el historial completo
       - name: Encender la base de datos de pruebas
@@ -93,7 +93,7 @@ jobs:
     needs: [pruebas-codigo]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Construir y encender Cuidarte+ completo con Docker
         run: docker compose up -d --build --wait
       - name: Esperar a que el frontend y la API respondan
@@ -165,7 +165,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Preparar nombre del dueño en minúsculas
         run: echo "OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
       - name: Iniciar sesión en GitHub Container Registry
