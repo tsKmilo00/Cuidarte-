@@ -71,7 +71,7 @@ jobs:
         run: npm test -- --runInBand
       - name: Guardar reporte de cobertura
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cobertura-backend
           path: BACKEND/coverage/
@@ -119,7 +119,7 @@ jobs:
         run: npx playwright test
       - name: Guardar reporte de Playwright
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: reporte-playwright
           path: pruebas-e2e/playwright-report/
@@ -144,7 +144,7 @@ jobs:
             zap-api-scan.py -t http://localhost:4444/openapi.json -f openapi -r zap-api.html -I
       - name: Guardar reportes de ZAP
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: reportes-zap
           path: zap/
